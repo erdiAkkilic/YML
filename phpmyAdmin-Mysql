@@ -1,0 +1,16 @@
+version : '3'
+services:
+  mysql-server:
+    image: mysql
+    ports:
+     - 27017:27017
+    environment:
+     - MYSQL_ROOT_PASSWORD=123456
+    volumes:
+     - /opt/data:/etc/mysql/conf.d  
+  phpadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+     - 8000:80
+    links:
+     - mysql-server:db
